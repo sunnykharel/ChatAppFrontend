@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatRoom.chats.ChatsMainController">
+   <tabs>
+      <Tab closable="false" text="ChatsMenu">
+         <content>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="1248.0">
+               <left>
+                  <ScrollPane fx:id="chatsListingScrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="259.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                     <content>
+                        <VBox fx:id="chatsListingVBox" />
+                     </content>
+                  </ScrollPane>
+               </left>
+               <center>
+                  <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <BorderPane>
+                           <center>
+                              <ScrollPane fx:id="scrollPane1" vbarPolicy="ALWAYS">
+                                 <content>
+                                    <VBox fx:id="vBox1" alignment="TOP_CENTER">
+                                       <padding>
+                                          <Insets left="10.0" right="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </center>
+                           <bottom>
+                              <HBox fx:id="sendMessageBar1" prefHeight="32.0" prefWidth="290.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="enterMessage1" prefHeight="31.0" prefWidth="227.0" promptText="Enter a message..." />
+                                    <Button fx:id="sendMessage1" mnemonicParsing="false" onAction="#onSendMessage1" text="Send" />
+                                 </children>
+                              </HBox>
+                           </bottom>
+                        </BorderPane>
+                        <BorderPane>
+                           <center>
+                              <ScrollPane fx:id="scrollPane2" vbarPolicy="ALWAYS">
+                                 <content>
+                                    <VBox fx:id="vBox2" alignment="TOP_CENTER" />
+                                 </content>
+                              </ScrollPane>
+                           </center>
+                           <bottom>
+                              <HBox fx:id="sendMessageBar2" prefHeight="33.0" prefWidth="689.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="enterMessage2" prefHeight="31.0" prefWidth="242.0" promptText="Enter a message..." />
+                                    <Button fx:id="sendMessage2" mnemonicParsing="false" onAction="#onSendMessage2" text="Send" />
+                                 </children>
+                              </HBox>
+                           </bottom>
+                        </BorderPane>
+                    </items>
+                  </SplitPane>
+               </center>
+               <top>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </content>
+      </Tab>
+      <Tab closable="false" text="Add Chat Menu">
+         <content>
+            <BorderPane>
+               <top>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <items>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="1222.0" text="Add Chat Menu">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+               </top>
+               <left>
+                  <ScrollPane vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                     <content>
+                        <VBox fx:id="currentUsersInChat" prefHeight="360.0" prefWidth="197.0" />
+                     </content>
+                  </ScrollPane>
+               </left>
+               <center>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="requestedAdditionalUser" layoutX="222.0" layoutY="165.0" promptText="Type username of person" />
+                        <Text fill="#8d8d8d" layoutX="14.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add User to Chat" textAlignment="CENTER" wrappingWidth="194.6708984375">
+                           <font>
+                              <Font name="Calibri Bold" size="19.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="addUserButton" layoutX="427.0" layoutY="161.0" mnemonicParsing="false" onAction="#onAddUser" prefHeight="31.0" prefWidth="92.0" text="Add User" />
+                        <Text fill="#8d8d8d" layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name the Chat" textAlignment="CENTER" wrappingWidth="194.6708984375">
+                           <font>
+                              <Font name="Calibri Bold" size="19.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="chatName" layoutX="222.0" layoutY="64.0" promptText="Type name of chat" />
+                        <Button fx:id="nameChatButton" layoutX="420.0" layoutY="65.0" mnemonicParsing="false" onAction="#onNameChat" prefHeight="31.0" prefWidth="106.0" text="Name Chat" />
+                        <Button fx:id="createChatButton" layoutX="36.0" layoutY="264.0" mnemonicParsing="false" onAction="#onCreateChat" prefHeight="31.0" prefWidth="186.0" text="Create Chat!" />
+                        <Text fx:id="serverResponseUpdate" layoutX="254.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="649.6708984375" />
+                        <Button fx:id="restartCreateButton" layoutX="36.0" layoutY="320.0" mnemonicParsing="false" onAction="#onRestartCreate" prefHeight="31.0" prefWidth="186.0" text="Restart Chat Creation" />
+                        <TextField fx:id="broadCastText" layoutX="36.0" layoutY="591.0" prefHeight="31.0" prefWidth="369.0" promptText="Enter broadcast message" />
+                        <Button fx:id="broadCastButton" layoutX="441.0" layoutY="591.0" mnemonicParsing="false" onAction="#onBroadCast" prefHeight="31.0" prefWidth="174.0" text="Broadcast Message" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
